@@ -1,0 +1,50 @@
+name: Immutable. Full resource name of the product, such as projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/productId.
+id: Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1. This field must be a UTF-8 encoded string with a length limit of 128 characters.
+type: Immutable. The type of the product. Must be one of 'PRIMARY', 'VARIANT', or 'COLLECTION'.
+primaryProductId: Variant group identifier. Must be an id of another product. For PRIMARY products, this field can only be empty or set to the same value as id. For VARIANT products, this field cannot be empty.
+collectionMemberIds: The id of the collection members when type is 'COLLECTION'. A maximum of 1000 values are allowed.
+gtin: The Global Trade Item Number (GTIN) of the product. Must be a valid GTIN.
+categories: Product categories. Use '>' to separate hierarchies. Must be set for PRIMARY products. At most 250 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters.
+title: Required. Product title. Must be a UTF-8 encoded string with a length limit of 1,000 characters.
+brands: The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters.
+description: Product description. Must be a UTF-8 encoded string with a length limit of 5,000 characters.
+languageCode: Language of the title/description. Use BCP 47 language tags. Defaults to "en-US".
+attributes: Highly encouraged. Extra product attributes. Max 200 entries. Key must match pattern: [a-zA-Z0-9][a-zA-Z0-9_]*. For text attributes, at most 400 values, each with a 256 character limit. For number attributes, at most 400 values.
+tags: Custom tags for filtering. At most 250 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 1,000 characters.
+priceInfo: Product price and cost information.
+priceInfo.currencyCode: The 3-letter currency code defined in ISO 4217.
+priceInfo.price: Price of the product.
+priceInfo.originalPrice: Price of the product without any discount. Should be >= price.
+priceInfo.cost: The costs associated with the sale of a particular product.
+priceInfo.priceEffectiveTime: Timestamp (RFC 3339) when the price starts to be effective.
+priceInfo.priceExpireTime: Timestamp (RFC 3339) when the price stops to be effective.
+rating: The rating of this product.
+rating.ratingCount: The total number of ratings. Must be non-negative.
+rating.averageRating: The average rating of the Product, scaled at 1-5.
+rating.ratingHistogram: List of rating counts per rating value (index = rating - 1). Size must be 5 if non-empty.
+expireTime: Timestamp (RFC 3339) when the product expires. Must be later than availableTime and publishTime.
+ttl: Input only. The TTL (time to live) of the product. e.g. "3600s".
+availableTime: The timestamp (RFC 3339) when this Product becomes available for Search.
+availability: The online availability of the Product. One of 'IN_STOCK', 'OUT_OF_STOCK', 'PREORDER', 'BACKORDER'. Default to 'IN_STOCK'.
+availableQuantity: The available quantity of the item.
+fulfillmentInfo: Fulfillment information.
+fulfillmentInfo.type: The fulfillment type. e.g., "pickup-in-store", "ship-to-store", "same-day-delivery", "next-day-delivery", "custom-type-1".
+fulfillmentInfo.placeIds: The IDs for this type, such as store IDs. Max 3000 values.
+uri: Canonical URL directly linking to the product detail page. Length limit of 5,000 characters.
+images: Product images. Main image first. A maximum of 300 images are allowed.
+images.uri: Required. URI of the image. Length limit of 5,000 characters.
+images.height: Height of the image in pixels. Must be non-negative.
+images.width: Width of the image in pixels. Must be non-negative.
+audience: The target group associated with a given audience.
+audience.genders: Genders of the audience. e.g., "male", "female", "unisex". At most 5 values.
+audience.ageGroups: Age groups of the audience. e.g., "newborn", "infant", "toddler", "kids", "adult". At most 5 values.
+colorInfo: The color of the product.
+colorInfo.colorFamilies: Standard color families. e.g., "Red", "Blue", "Green". Max 5 values.
+colorInfo.colors: The color display names. Max 75 colors.
+sizes: The size of the product. e.g., "S", "M", "L". Max 20 values.
+materials: The material of the product. e.g., "leather", "wooden". Max 20 values.
+patterns: The pattern or graphic print of the product. e.g., "striped", "polka dot". Max 20 values.
+conditions: The condition of the product. e.g., "new", "refurbished", "used". Max 1 value.
+publishTime: The timestamp (RFC 3339) when the product is published by the retailer for the first time.
+promotions: The promotions applied to the product. Max 10 values.
+promotions.promotionId: Promotion identifier.
