@@ -1,0 +1,15 @@
+2025-08-21 22:29:01,309 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2025-08-21 22:29:01,338 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'set']
+2025-08-21 22:29:01,341 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "project", VALUE: "partarch-ecommerce-demo"]
+2025-08-21 22:29:01,424 DEBUG    google.auth.transport.requests Making request: GET http://192.168.10.5/computeMetadata/v1/instance/service-accounts/jake.holmquist@valtech.com/?recursive=true
+2025-08-21 22:29:01,427 DEBUG    urllib3.connectionpool Starting new HTTP connection (1): 192.168.10.5:80
+2025-08-21 22:29:01,429 DEBUG    urllib3.connectionpool http://192.168.10.5:80 "GET /computeMetadata/v1/instance/service-accounts/jake.holmquist@valtech.com/?recursive=true HTTP/11" 200 221
+2025-08-21 22:29:01,430 DEBUG    google.auth.transport.requests Making request: GET http://192.168.10.5/computeMetadata/v1/instance/service-accounts/jake.holmquist@valtech.com/token
+2025-08-21 22:29:01,432 DEBUG    urllib3.connectionpool http://192.168.10.5:80 "GET /computeMetadata/v1/instance/service-accounts/jake.holmquist@valtech.com/token HTTP/11" 200 329
+2025-08-21 22:29:01,457 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2025-08-21 22:29:01,530 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects/partarch-ecommerce-demo?alt=json HTTP/11" 200 None
+2025-08-21 22:29:01,533 INFO     ___FILE_ONLY___ Updated property [core/project].
+
+2025-08-21 22:29:01,534 DEBUG    root            Chosen display Format:default
+2025-08-21 22:29:01,535 INFO     root            Display format: "default"
+2025-08-21 22:29:01,535 DEBUG    root            SDK update checks are disabled.

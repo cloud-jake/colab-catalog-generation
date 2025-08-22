@@ -2,21 +2,21 @@ name: Immutable. Full resource name of the product, such as projects/*/locations
 id: Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1. This field must be a UTF-8 encoded string with a length limit of 128 characters.
 type: Immutable. The type of the product. Must be one of 'PRIMARY', 'VARIANT', or 'COLLECTION'.
 primaryProductId: Variant group identifier. Must be an id of another product. For PRIMARY products, this field can only be empty or set to the same value as id. For VARIANT products, this field cannot be empty.
-collectionMemberIds: The id of the collection members when type is 'COLLECTION'. A maximum of 1000 values are allowed.
-gtin: The Global Trade Item Number (GTIN) of the product. Must be a valid GTIN.
+collectionMemberIds: IMPORTANT: This field should ONLY be populated when `type` is 'COLLECTION'. For 'PRIMARY' and 'VARIANT' products, this field must be omitted or be an empty array.
+gtin: The Global Trade Item Number (GTIN) of the product. Must be a valid, numerical GTIN (e.g., a 12 or 13-digit UPC/EAN). Do NOT include any letters, spaces, or symbols.
 categories: Product categories. Use '>' to separate hierarchies. Must be set for PRIMARY products. At most 250 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters.
 title: Required. Product title. Must be a UTF-8 encoded string with a length limit of 1,000 characters.
 brands: The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters.
 description: Product description. Must be a UTF-8 encoded string with a length limit of 5,000 characters.
 languageCode: Language of the title/description. Use BCP 47 language tags. Defaults to "en-US".
-attributes: Highly encouraged. Extra product attributes. Max 200 entries. Key must match pattern: [a-zA-Z0-9][a-zA-Z0-9_]*. For text attributes, at most 400 values, each with a 256 character limit. For number attributes, at most 400 values.
+attributes: Highly encouraged. Extra product attributes. Max 200 entries. Key must match pattern: [a-zA-Z0-9][a-zA-Z0-9_]*. CRITICAL: For each attribute object, you must provide a value for EITHER `text` OR `numbers`, but NEVER BOTH. Do not set both `text` and `numbers` fields for the same attribute.
 tags: Custom tags for filtering. At most 250 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 1,000 characters.
 priceInfo: Product price and cost information.
 priceInfo.currencyCode: The 3-letter currency code defined in ISO 4217.
 priceInfo.price: Price of the product.
 priceInfo.originalPrice: Price of the product without any discount. Should be >= price.
 priceInfo.cost: The costs associated with the sale of a particular product.
-priceInfo.priceEffectiveTime: Timestamp (RFC 3339) when the price starts to be effective.
+priceInfo.priceEffectiveTime: Timestamp (RFC 3339) when the price starts to be effective. CRITICAL: If you set this field, you MUST also set `originalPrice`.
 priceInfo.priceExpireTime: Timestamp (RFC 3339) when the price stops to be effective.
 rating: The rating of this product.
 rating.ratingCount: The total number of ratings. Must be non-negative.
@@ -28,8 +28,8 @@ availableTime: The timestamp (RFC 3339) when this Product becomes available for 
 availability: The online availability of the Product. One of 'IN_STOCK', 'OUT_OF_STOCK', 'PREORDER', 'BACKORDER'. Default to 'IN_STOCK'.
 availableQuantity: The available quantity of the item.
 fulfillmentInfo: Fulfillment information.
-fulfillmentInfo.type: The fulfillment type. e.g., "pickup-in-store", "ship-to-store", "same-day-delivery", "next-day-delivery", "custom-type-1".
-fulfillmentInfo.placeIds: The IDs for this type, such as store IDs. Max 3000 values.
+fulfillmentInfo.type: The fulfillment type. Must be one of 'custom-type-1', 'custom-type-2', 'custom-type-3', 'custom-type-4', 'custom-type-5', 'next-day-delivery', 'pickup-in-store', 'same-day-delivery', 'ship-to-store'.
+fulfillmentInfo.placeIds: The IDs for this type, such as store IDs. IMPORTANT: Each ID must match the pattern [a-zA-Z0-9_]+ (letters, numbers, and underscores only, NO hyphens). For example: "store_123", "warehouse_a". Max 3000 values.
 uri: Canonical URL directly linking to the product detail page. Length limit of 5,000 characters.
 images: Product images. Main image first. A maximum of 300 images are allowed.
 images.uri: Required. URI of the image. Length limit of 5,000 characters.
