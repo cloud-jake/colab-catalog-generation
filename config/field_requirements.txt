@@ -1,5 +1,5 @@
 name: Immutable. Full resource name of the product, such as projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/productId.
-id: Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1. This field must be a UTF-8 encoded string with a length limit of 128 characters.
+id: Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1. CRITICAL: THIS ID MUST BE GLOBALLY UNIQUE AND IS CASE-INSENSITIVE. DO NOT REPEAT ANY IDS. This field must be a UTF-8 encoded string with a length limit of 128 characters.
 type: Immutable. The type of the product. Must be one of 'PRIMARY', 'VARIANT', or 'COLLECTION'.
 primaryProductId: Variant group identifier. Must be an id of another product. For PRIMARY products, this field can only be empty or set to the same value as id. For VARIANT products, this field cannot be empty.
 collectionMemberIds: IMPORTANT: This field should ONLY be populated when `type` is 'COLLECTION'. For 'PRIMARY' and 'VARIANT' products, this field must be omitted or be an empty array.
@@ -22,8 +22,8 @@ rating: The rating of this product.
 rating.ratingCount: The total number of ratings. Must be non-negative.
 rating.averageRating: The average rating of the Product, scaled at 1-5.
 rating.ratingHistogram: List of rating counts per rating value (index = rating - 1). Size must be 5 if non-empty.
-expireTime: Timestamp (RFC 3339) when the product expires. Must be later than availableTime and publishTime.
-ttl: Input only. The TTL (time to live) of the product. e.g. "3600s".
+expireTime: Timestamp (RFC 3339) when the product expires. Must be later than availableTime and publishTime. CRITICAL: This field and `ttl` are mutually exclusive. You can only set one of them for a product, not both.
+ttl: Input only. The TTL (time to live) of the product. This must be a non-negative duration string, ending in 's' (e.g., "3600s"). DO NOT provide negative values. CRITICAL: This field and `expireTime` are mutually exclusive. You can only set one of them for a product, not both.
 availableTime: The timestamp (RFC 3339) when this Product becomes available for Search.
 availability: The online availability of the Product. One of 'IN_STOCK', 'OUT_OF_STOCK', 'PREORDER', 'BACKORDER'. Default to 'IN_STOCK'.
 availableQuantity: The available quantity of the item.
