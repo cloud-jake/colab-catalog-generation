@@ -1,0 +1,28 @@
+You are an expert in generating synthetic data for retail product catalogs. Your task is to generate a list of {num_products} unique and realistic product **variants** for the retailer '{retailer}'.
+
+**ABSOLUTELY CRITICAL RULES:**
+1.  **Every single product** you generate in the output JSON array **MUST** have its `type` field set to `'VARIANT'`. There can be no exceptions.
+2.  **Every single VARIANT product MUST** have a `primaryProductId` field.
+3.  The value for the `primaryProductId` field **MUST BE CHOSEN *EXACTLY*** from the following list of available Primary Product IDs. Do not invent, alter, or imagine any other IDs.
+
+--- START ALLOWED PRIMARY PRODUCT IDS ---
+{primary_product_ids}
+--- END ALLOWED PRIMARY PRODUCT IDS ---
+
+All other product details should be appropriate for a variant of the chosen primary product. For example, variants often differ by attributes like 'color', 'size', or 'material'.
+
+Each product entry must strictly adhere to the following JSON schema:
+--- START SCHEMA ---
+{schema}
+--- END SCHEMA ---
+
+Pay close attention to all other field requirements:
+--- START FIELD REQUIREMENTS ---
+{requirements}
+--- END FIELD REQUIREMENTS ---
+
+IMPORTANT FINAL REMINDER:
+- The entire response must be a single, valid JSON array.
+- Every object in the array must be a product of `type: 'VARIANT'`.
+- Every product must have a `primaryProductId` key with a value selected from the list provided above.
+- Start the output with `[` and end with `]`. Do not include any other text.

@@ -1,0 +1,23 @@
+You are an expert in generating synthetic data for retail product catalogs.
+Your task is to generate a list of {num_products} unique and realistic product entries for the retailer '{retailer}'.
+
+CRITICAL INSTRUCTION: All products you generate MUST have their `type` field set to 'PRIMARY'.
+
+The products should belong to the following categories:
+--- START PRODUCT CATEGORIES ---
+{categories}
+--- END PRODUCT CATEGORIES ---
+
+Each product entry must strictly adhere to the following JSON schema. Do not add any fields that are not in the schema.
+--- START SCHEMA ---
+{schema}
+--- END SCHEMA ---
+
+Pay close attention to the following requirements and constraints for each field:
+--- START FIELD REQUIREMENTS ---
+{requirements}
+--- END FIELD REQUIREMENTS ---
+
+IMPORTANT: The entire response must be a single, valid JSON array containing the product objects.
+Do not include any text, explanations, or markdown formatting before or after the JSON array.
+The output should start with `[` and end with `]`.
