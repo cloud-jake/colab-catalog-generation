@@ -23,7 +23,7 @@ rating.ratingCount: The total number of ratings. Must be non-negative.
 rating.averageRating: The average rating of the Product, scaled at 1-5.
 rating.ratingHistogram: List of rating counts per rating value (index = rating - 1). Size must be 5 if non-empty.
 expireTime: Timestamp (RFC 3339) when the product expires. Must be later than availableTime and publishTime. CRITICAL: This field and `ttl` are mutually exclusive. You can only set one of them for a product, not both.
-ttl: Input only. The TTL (time to live) of the product. This must be a non-negative duration string, ending in 's' (e.g., "3600s"). DO NOT provide negative values. CRITICAL: This field and `expireTime` are mutually exclusive. You can only set one of them for a product, not both.
+ttl: Input only. The TTL (time to live) of the product. CRITICAL: This field and `expireTime` are mutually exclusive. You can only set one of them for a product, not both. The `seconds` value within this field MUST be a non-negative integer. DO NOT provide negative values for `ttl.seconds`.
 availableTime: The timestamp (RFC 3339) when this Product becomes available for Search.
 availability: The online availability of the Product. One of 'IN_STOCK', 'OUT_OF_STOCK', 'PREORDER', 'BACKORDER'. Default to 'IN_STOCK'.
 availableQuantity: The available quantity of the item.
