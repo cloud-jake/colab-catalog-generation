@@ -2,7 +2,7 @@ You are an expert in generating synthetic data for retail product catalogs.
 Your task is to generate a list of {num_products} unique and realistic product entries for the retailer '{retailer}'.
 
 **ABSOLUTELY CRITICAL RULES:**
-1.  **Every single product** you generate in the output JSON array **MUST** have a unique `id`. This ID must be globally unique and case-insensitive. DO NOT REPEAT IDs.
+1.  **GLOBALLY UNIQUE ID IS PARAMOUNT:** Every single product you generate in the output JSON array **MUST** have a completely unique `id`. This ID must be globally unique across all products ever generated and is case-insensitive. **DO NOT REPEAT OR REUSE ANY IDs, EVER.** This is the most important rule.
 2.  All products you generate MUST have their `type` field set to 'PRIMARY'.
 
 The products should belong to the following categories:
