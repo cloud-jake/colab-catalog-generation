@@ -1,0 +1,10 @@
+2025-08-29 01:03:19,617 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2025-08-29 01:03:19,643 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'set']
+2025-08-29 01:03:19,645 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "project", VALUE: "partarch-ecommerce-demo"]
+2025-08-29 01:03:19,683 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2025-08-29 01:03:19,738 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects/partarch-ecommerce-demo?alt=json HTTP/11" 200 None
+2025-08-29 01:03:19,740 INFO     ___FILE_ONLY___ Updated property [core/project].
+
+2025-08-29 01:03:19,741 DEBUG    root            Chosen display Format:default
+2025-08-29 01:03:19,741 INFO     root            Display format: "default"
+2025-08-29 01:03:19,742 DEBUG    root            SDK update checks are disabled.
